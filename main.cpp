@@ -1,11 +1,11 @@
 /* mbed Microcontroller Library
  * Copyright (c) 2019 ARM Limited
  * SPDX-License-Identifier: Apache-2.0
+ * Juri Pfammatter
  */
 
 #include "IRSensor.h"
 #include "mbed.h"
-
 
 // Blinking rate in milliseconds
 #define BLINKING_RATE       100ms
@@ -27,7 +27,7 @@ int main()
 
     while (true) {
         for(int i=0; i<NUM_LED; i++){
-            IRSensor sen(distance, bit0, bit1, bit2, i);
+            IRSensor sen(distance, bit0, bit1, bit2, i); // automatically destructed when going out of scope (for loop)
             enable = 1;
             d[i] = sen.read();
 
