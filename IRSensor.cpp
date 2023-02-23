@@ -33,34 +33,10 @@ IRSensor::~IRSensor() {}
  * @return a distance value, given in [m].
  */
 float IRSensor::read() {
-
-    switch(number){
-        case 0: bit0 = 0;
-                bit1 = 0;
-                bit2 = 0;
-                break;
-        case 1: bit0 = 1;
-                bit1 = 0;
-                bit2 = 0;
-                break;
-        case 2: bit0 = 0;
-                bit1 = 1;
-                bit2 = 0;
-                break;
-        case 3: bit0 = 1;
-                bit1 = 1;
-                bit2 = 0;
-                break;
-        case 4: bit0 = 0;
-                bit1 = 0;
-                bit2 = 1;
-                break;
-        case 5: bit0 = 1;
-                bit1 = 0;
-                bit2 = 1;
-                break;
-    }
-
+    bit0 = number & 0x1;
+    bit1 = number & 0x3;
+    bit2 = number & 0x5;
+    
     float d = 0.09f/(distance+0.001f)-0.03f; // Lesen der Distanz in [m]
 
     return d;
