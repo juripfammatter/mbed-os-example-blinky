@@ -41,3 +41,11 @@ float IRSensor::read() {
 
     return d;
 }
+
+/**
+ * The empty operator is a shorthand notation of the <code>read()</code> method.
+ */
+IRSensor::operator float() {
+    
+    return read();
+}
